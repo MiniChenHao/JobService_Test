@@ -1,0 +1,133 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>JobService_Test</name>
+    </assembly>
+    <members>
+        <member name="T:JobService_Test.HangfireExtensions">
+            <summary>
+            Hangfire扩展
+            </summary>
+        </member>
+        <member name="M:JobService_Test.HangfireExtensions.UseOwin(Topshelf.HostConfigurators.HostConfigurator,System.String)">
+            <summary>
+            使用OWIN
+            </summary>
+            <param name="configurator"></param>
+            <param name="baseAddress"></param>
+            <returns></returns>
+        </member>
+        <member name="M:JobService_Test.HangfireExtensions.UseStorage``1(Owin.IAppBuilder,``0)">
+            <summary>
+            
+            </summary>
+            <typeparam name="TStorage"></typeparam>
+            <param name="app"></param>
+            <param name="storage"></param>
+            <returns></returns>
+        </member>
+        <member name="T:JobService_Test.Bootstrap">
+            <summary>
+            OWIN host
+            </summary>
+        </member>
+        <member name="P:JobService_Test.Bootstrap.Address">
+            <summary>
+            地址
+            </summary>
+        </member>
+        <member name="M:JobService_Test.Bootstrap.Start(Topshelf.HostControl)">
+            <summary>
+            启动
+            </summary>
+            <param name="hostControl"></param>
+            <returns></returns>
+        </member>
+        <member name="M:JobService_Test.Bootstrap.Stop(Topshelf.HostControl)">
+            <summary>
+            停止
+            </summary>
+            <param name="hostControl"></param>
+            <returns></returns>
+        </member>
+        <member name="T:JobService_Test.Controllers.HomeController">
+            <summary>
+            Home 控制器
+            </summary>
+        </member>
+        <member name="M:JobService_Test.Controllers.HomeController.Get">
+            <summary>
+            Get
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:JobService_Test.Controllers.ValuesController">
+            <summary>
+            VALUES 控制器
+            </summary>
+        </member>
+        <member name="M:JobService_Test.Controllers.ValuesController.Get">
+            <summary>
+            GET
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:JobService_Test.Controllers.ValuesController.Get(System.Int32)">
+            <summary>
+            GET
+            </summary>
+            <param name="id">ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:JobService_Test.Controllers.ValuesController.Post(System.String)">
+            <summary>
+            POST
+            </summary>
+            <param name="value">Value</param>
+        </member>
+        <member name="M:JobService_Test.Controllers.ValuesController.Put(System.Int32,System.String)">
+            <summary>
+            PUT
+            </summary>
+            <param name="id">ID</param>
+            <param name="value">Value</param>
+        </member>
+        <member name="M:JobService_Test.Controllers.ValuesController.Delete(System.Int32)">
+            <summary>
+            DELETE
+            </summary>
+            <param name="id">ID</param>
+        </member>
+        <member name="T:JobService_Test.Job.TestJob">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:JobService_Test.Job.TestJob.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:JobService_Test.Job.TestJob.Start">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:JobService_Test.Job.TestJob.Stop">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:JobService_Test.Startup">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:JobService_Test.Startup.Configuration(Owin.IAppBuilder)">
+            <summary>
+            
+            </summary>
+            <param name="app"></param>
+        </member>
+    </members>
+</doc>

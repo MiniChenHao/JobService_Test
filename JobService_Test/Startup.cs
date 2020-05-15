@@ -5,6 +5,7 @@ using System.Web.Http;
 using Swashbuckle.Application;
 using Hangfire.Console;
 using Hangfire;
+using System.Net.Http.Formatting;
 
 [assembly: OwinStartup(typeof(JobService_Test.Startup))]
 

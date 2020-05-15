@@ -31,8 +31,9 @@ namespace JobService_Test.Controllers
         /// POST
         /// </summary>
         /// <param name="value">Value</param>
-        public void Post([FromBody]string value)
+        public string Post([FromBody]string value)
         {
+            return value;
         }
 
         /// <summary>
@@ -40,16 +41,18 @@ namespace JobService_Test.Controllers
         /// </summary>
         /// <param name="id">ID</param>
         /// <param name="value">Value</param>
-        public void Put(int id, [FromBody]string value)
+        public string Put(int id, [FromBody]string value)
         {
+            return value;
         }
 
         /// <summary>
         /// DELETE
         /// </summary>
         /// <param name="id">ID</param>
-        public void Delete(int id)
+        public string Delete(int id)
         {
+            return "成功";
         }
     }
 }
