@@ -26,6 +26,14 @@
             <param name="storage"></param>
             <returns></returns>
         </member>
+        <member name="M:JobService_Test.HangfireExtensions.UseAutofac(Owin.IAppBuilder,System.Web.Http.HttpConfiguration)">
+            <summary>
+            
+            </summary>
+            <param name="app"></param>
+            <param name="config"></param>
+            <returns></returns>
+        </member>
         <member name="T:JobService_Test.Bootstrap">
             <summary>
             OWIN host

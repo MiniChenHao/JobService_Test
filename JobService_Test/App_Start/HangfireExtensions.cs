@@ -1,4 +1,6 @@
-﻿using Hangfire;
+﻿using Autofac;
+using Autofac.Integration.WebApi;
+using Hangfire;
 using Owin;
 using System;
 using Topshelf;
@@ -35,6 +37,25 @@ namespace JobService_Test
         {
             if (storage == null) { throw new ArgumentNullException(nameof(storage)); }
             return GlobalConfiguration.Configuration.UseStorage(storage);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="app"></param>
+        /// <param name="config"></param>
+        /// <returns></returns>
+        public static IContainer UseAutofac(this IAppBuilder app, System.Web.Http.HttpConfiguration config)
+        {
+            if (config == null) throw new ArgumentNullException(nameof(config));
+            var builder = new ContainerBuilder();
+            var assembly = typeof(Startup).Assembly;
+            builder.RegisterAssemblyModules(assembly);
+            builder.RegisterApiControllers(assembly);
+            var container = builder.Build();
+            config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
+            GlobalConfiguration.Configuration.UseAutofacActivator(container);
+            return container;
         }
     }
 }

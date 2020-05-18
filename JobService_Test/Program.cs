@@ -16,8 +16,7 @@ namespace JobService_Test
                     Y.WhenStopped(T => T.Stop());
                 });
 
-                X.RunAsLocalSystem();
-                //服务使用NETWORK_SERVICE内置帐户运行。
+                X.RunAsLocalSystem();//服务使用NETWORK_SERVICE内置帐户运行。
                 //身份标识，有好几种方式，如：X.RunAs("username", "password"); X.RunAsPrompt(); X.RunAsNetworkService(); 等
 
                 X.SetDisplayName("自动服务");//显示名称

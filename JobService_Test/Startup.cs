@@ -6,6 +6,7 @@ using Swashbuckle.Application;
 using Hangfire.Console;
 using Hangfire;
 using System.Net.Http.Formatting;
+using Autofac;
 
 [assembly: OwinStartup(typeof(JobService_Test.Startup))]
 
@@ -39,6 +40,8 @@ namespace JobService_Test
                 c.SingleApiVersion("v1", "JobServiceAPI");
                 c.IncludeXmlComments($@"{typeof(Startup).Assembly.GetName().Name}.xml");
             }).EnableSwaggerUi();
+
+            IContainer container = app.UseAutofac(config);
 
             //将默认XML返回数据格式改为JSON
             config.Formatters.XmlFormatter.SupportedMediaTypes.Clear();

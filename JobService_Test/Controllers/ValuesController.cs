@@ -33,7 +33,7 @@ namespace JobService_Test.Controllers
         /// <param name="value">Value</param>
         public string Post([FromBody]string value)
         {
-            return value;
+            return "value";
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace JobService_Test.Controllers
         /// <param name="value">Value</param>
         public string Put(int id, [FromBody]string value)
         {
-            return value;
+            return "value";
         }
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace JobService_Test.Controllers
         /// <param name="id">ID</param>
         public string Delete(int id)
         {
-            return "成功";
+            return "value";
         }
     }
 }

@@ -43,3 +43,11 @@ G:\GitHubObject\JobService_Test\JobService_Test\bin\Debug\zh-TW\Hangfire.Core.re
 G:\GitHubObject\JobService_Test\JobService_Test\obj\Debug\JobService_Test.exe
 G:\GitHubObject\JobService_Test\JobService_Test\obj\Debug\JobService_Test.pdb
 G:\GitHubObject\JobService_Test\JobService_Test\bin\Debug\JobService_Test.XML
+G:\GitHubObject\JobService_Test\JobService_Test\bin\Debug\Autofac.dll
+G:\GitHubObject\JobService_Test\JobService_Test\bin\Debug\Autofac.Integration.WebApi.dll
+G:\GitHubObject\JobService_Test\JobService_Test\bin\Debug\Hangfire.Autofac.dll
+G:\GitHubObject\JobService_Test\JobService_Test\bin\Debug\Autofac.pdb
+G:\GitHubObject\JobService_Test\JobService_Test\bin\Debug\Autofac.xml
+G:\GitHubObject\JobService_Test\JobService_Test\bin\Debug\Autofac.Integration.WebApi.pdb
+G:\GitHubObject\JobService_Test\JobService_Test\bin\Debug\Autofac.Integration.WebApi.xml
+G:\GitHubObject\JobService_Test\JobService_Test\bin\Debug\Hangfire.Autofac.xml
