@@ -35,6 +35,7 @@ namespace JobService_Test
                 });
             });
             Environment.ExitCode = (int)Convert.ChangeType(rc, rc.GetTypeCode());
+            Console.ReadLine();
         }
     }
 }

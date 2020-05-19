@@ -41,8 +41,6 @@ namespace JobService_Test
                 c.IncludeXmlComments($@"{typeof(Startup).Assembly.GetName().Name}.xml");
             }).EnableSwaggerUi();
 
-            IContainer container = app.UseAutofac(config);
-
             //将默认XML返回数据格式改为JSON
             config.Formatters.XmlFormatter.SupportedMediaTypes.Clear();
             config.Formatters.JsonFormatter.MediaTypeMappings.Add(new QueryStringMapping("datatype", "json", "application/json"));
@@ -51,7 +49,10 @@ namespace JobService_Test
 
             app.UseStorage(new SqlServerStorage("Data Source=localhost;Initial Catalog=ShenOnlineJob;Persist Security Info=True;User ID=sa;Password=123")).UseConsole();
             app.UseHangfireDashboard();
+            app.UseDashboardMetric();
             app.UseHangfireServer();
+            
+            app.UseRecurringJob(typeof(Jobs.RecurringJobService));
         }
     }
 }

@@ -26,12 +26,27 @@
             <param name="storage"></param>
             <returns></returns>
         </member>
+        <member name="M:JobService_Test.HangfireExtensions.UseDashboardMetric(Owin.IAppBuilder)">
+            <summary>
+            
+            </summary>
+            <param name="app"></param>
+            <returns></returns>
+        </member>
         <member name="M:JobService_Test.HangfireExtensions.UseAutofac(Owin.IAppBuilder,System.Web.Http.HttpConfiguration)">
             <summary>
             
             </summary>
             <param name="app"></param>
             <param name="config"></param>
+            <returns></returns>
+        </member>
+        <member name="M:JobService_Test.HangfireExtensions.UseRecurringJob(Owin.IAppBuilder,System.Type[])">
+            <summary>
+            
+            </summary>
+            <param name="app"></param>
+            <param name="types"></param>
             <returns></returns>
         </member>
         <member name="T:JobService_Test.Bootstrap">
@@ -69,6 +84,11 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="T:JobService_Test.Controllers.TestController">
+            <summary>
+            测试 控制器
+            </summary>
+        </member>
         <member name="T:JobService_Test.Controllers.ValuesController">
             <summary>
             VALUES 控制器
@@ -105,6 +125,17 @@
             DELETE
             </summary>
             <param name="id">ID</param>
+        </member>
+        <member name="T:JobService_Test.Jobs.RecurringJobService">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:JobService_Test.Jobs.RecurringJobService.ConsoleJob(Hangfire.Server.PerformContext)">
+            <summary>
+            控制台作业
+            </summary>
+            <param name="context"></param>
         </member>
         <member name="T:JobService_Test.Job.TestJob">
             <summary>
