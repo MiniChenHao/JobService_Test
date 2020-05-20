@@ -41,7 +41,7 @@ namespace JobService_Test.Jobs
         /// 控制台作业
         /// </summary>
         /// <param name="context"></param>
-        [RecurringJob("* * * * *")]
+        [RecurringJob("* * * * *", RecurringJobId = "每分钟执行ConsoleJob", TimeZone = "China Standard Time", Queue = "default")]
         [DisplayName("每分钟执行ConsoleJob")]
         public void ConsoleJob(PerformContext context)
         {

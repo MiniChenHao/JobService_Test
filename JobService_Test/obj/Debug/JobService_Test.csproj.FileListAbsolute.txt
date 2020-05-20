@@ -52,3 +52,4 @@ G:\GitHubObject\JobService_Test\JobService_Test\bin\Debug\Autofac.Integration.We
 G:\GitHubObject\JobService_Test\JobService_Test\bin\Debug\Hangfire.Autofac.xml
 G:\GitHubObject\JobService_Test\JobService_Test\bin\Debug\Hangfire.RecurringJobExtensions.dll
 G:\GitHubObject\JobService_Test\JobService_Test\bin\Debug\Hangfire.RecurringJobExtensions.xml
+G:\GitHubObject\JobService_Test\JobService_Test\obj\Debug\JobService_Test.csprojResolveAssemblyReference.cache
