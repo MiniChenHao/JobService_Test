@@ -13,37 +13,26 @@ namespace JobService_Test.Jobs
     /// </summary>
     public class RecurringJobService
     {
-        ///// <summary>
-        ///// 
-        ///// </summary>
-        ///// <param name="context"></param>
-        //[RecurringJob("*/1 * * * *")]
-        //[DisplayName("InstanceTestJob")]
-        //[Queue("jobs")]
-        //public void InstanceTestJob(PerformContext context)
-        //{
-        //    context.WriteLine($"{DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss")} InstanceTestJob Running ...");
-        //}
-
-        ///// <summary>
-        ///// 
-        ///// </summary>
-        ///// <param name="context"></param>
-        //[RecurringJob("*/5 * * * *")]
-        //[DisplayName("JobStaticTest")]
-        //[Queue("jobs")]
-        //public static void StaticTestJob(PerformContext context)
-        //{
-        //    context.WriteLine($"{DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss")} StaticTestJob Running ...");
-        //}
-
         /// <summary>
-        /// 控制台作业
+        /// 
         /// </summary>
         /// <param name="context"></param>
-        [RecurringJob("* * * * *", RecurringJobId = "每分钟执行ConsoleJob", TimeZone = "China Standard Time", Queue = "default")]
-        [DisplayName("每分钟执行ConsoleJob")]
-        public void ConsoleJob(PerformContext context)
+        [RecurringJob("*/1 * * * *")]
+        [DisplayName("InstanceTestJob")]
+        [Queue("jobs")]
+        public void InstanceTestJob(PerformContext context)
+        {
+            context.WriteLine($"{DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss")} InstanceTestJob Running ...");
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="context"></param>
+        [RecurringJob("* * * * *")]
+        [DisplayName("SimpleJob")]
+        [Queue("default")]
+        public void SimpleJob(PerformContext context)
         {
             context.WriteLine($"{DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss")} SimpleJob Running ...");
             var progressBar = context.WriteProgressBar();
@@ -51,7 +40,18 @@ namespace JobService_Test.Jobs
             {
                 System.Threading.Thread.Sleep(1000);
             }
-            //return "成功";
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="context"></param>
+        [RecurringJob("*/5 * * * *")]
+        [DisplayName("JobStaticTest")]
+        [Queue("jobs")]
+        public static void StaticTestJob(PerformContext context)
+        {
+            context.WriteLine($"{DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss")} StaticTestJob Running ...");
         }
     }
 }

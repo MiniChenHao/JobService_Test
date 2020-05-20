@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JobService_Test.Job
+namespace JobService_Test.Jobs
 {
-    interface IDependency
+    /// <summary>
+    /// 
+    /// </summary>
+    public interface IDependency
     {
     }
 }

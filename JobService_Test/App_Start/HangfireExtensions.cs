@@ -8,6 +8,7 @@ using Hangfire.RecurringJobExtensions;
 using Hangfire.SqlServer;
 using Owin;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Topshelf;
 using Topshelf.HostConfigurators;
@@ -68,7 +69,7 @@ namespace JobService_Test
         }
 
         /// <summary>
-        /// 
+        /// 使用IOC
         /// </summary>
         /// <param name="app"></param>
         /// <param name="config"></param>
@@ -95,8 +96,38 @@ namespace JobService_Test
         public static IAppBuilder UseRecurringJob(this IAppBuilder app, params Type[] types)
         {
             if (types == null) throw new ArgumentNullException(nameof(types));
-            GlobalConfiguration.Configuration.UseRecurringJob(types);
+            GlobalConfiguration.Configuration.UseRecurringJob(() => types);
             return app;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="app"></param>
+        /// <param name="container"></param>
+        /// <returns></returns>
+        public static IAppBuilder UseRecurringJob(this IAppBuilder app, IContainer container)
+        {
+            if (container == null) throw new ArgumentNullException(nameof(container));
+            GlobalConfiguration.Configuration.UseRecurringJob(container);
+            return app;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="configuration"></param>
+        /// <param name="container"></param>
+        /// <returns></returns>
+        public static IGlobalConfiguration UseRecurringJob(this IGlobalConfiguration configuration, IContainer container)
+        {
+            if (container == null) throw new ArgumentNullException(nameof(container));
+            var interfaceTypes = container.ComponentRegistry
+                .RegistrationsFor(new TypedService(typeof(Jobs.IDependency)))
+                .Select(x => x.Activator)
+                .OfType<ReflectionActivator>()
+                .Select(x => x.LimitType.GetInterface($"I{x.LimitType.Name}"));
+            return GlobalConfiguration.Configuration.UseRecurringJob(() => interfaceTypes);
         }
     }
 }

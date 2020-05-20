@@ -4,6 +4,48 @@
         <name>JobService_Test</name>
     </assembly>
     <members>
+        <member name="T:JobService_Test.AppService.BaseAppService">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:JobService_Test.AppService.BaseAppService.Logger">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:JobService_Test.AppService.IAppService">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:JobService_Test.AppService.IAppService.Logger">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:JobService_Test.AppService.ISampleService">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:JobService_Test.AppService.ISampleService.SimpleJob(Hangfire.Server.PerformContext)">
+            <summary>
+            simple job test
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="T:JobService_Test.AppService.SampleService">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:JobService_Test.AppService.SampleService.SimpleJob(Hangfire.Server.PerformContext)">
+            <summary>
+            
+            </summary>
+            <param name="context"></param>
+        </member>
         <member name="T:JobService_Test.HangfireExtensions">
             <summary>
             Hangfire扩展
@@ -35,7 +77,7 @@
         </member>
         <member name="M:JobService_Test.HangfireExtensions.UseAutofac(Owin.IAppBuilder,System.Web.Http.HttpConfiguration)">
             <summary>
-            
+            使用IOC
             </summary>
             <param name="app"></param>
             <param name="config"></param>
@@ -47,6 +89,22 @@
             </summary>
             <param name="app"></param>
             <param name="types"></param>
+            <returns></returns>
+        </member>
+        <member name="M:JobService_Test.HangfireExtensions.UseRecurringJob(Owin.IAppBuilder,Autofac.IContainer)">
+            <summary>
+            
+            </summary>
+            <param name="app"></param>
+            <param name="container"></param>
+            <returns></returns>
+        </member>
+        <member name="M:JobService_Test.HangfireExtensions.UseRecurringJob(Hangfire.IGlobalConfiguration,Autofac.IContainer)">
+            <summary>
+            
+            </summary>
+            <param name="configuration"></param>
+            <param name="container"></param>
             <returns></returns>
         </member>
         <member name="T:JobService_Test.Bootstrap">
@@ -126,36 +184,57 @@
             </summary>
             <param name="id">ID</param>
         </member>
+        <member name="T:JobService_Test.Jobs.IDependency">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="T:JobService_Test.Jobs.RecurringJobService">
             <summary>
             
             </summary>
         </member>
-        <member name="M:JobService_Test.Jobs.RecurringJobService.ConsoleJob(Hangfire.Server.PerformContext)">
+        <member name="M:JobService_Test.Jobs.RecurringJobService.InstanceTestJob(Hangfire.Server.PerformContext)">
             <summary>
-            控制台作业
+            
             </summary>
             <param name="context"></param>
         </member>
-        <member name="T:JobService_Test.Job.TestJob">
+        <member name="M:JobService_Test.Jobs.RecurringJobService.SimpleJob(Hangfire.Server.PerformContext)">
+            <summary>
+            
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:JobService_Test.Jobs.RecurringJobService.StaticTestJob(Hangfire.Server.PerformContext)">
+            <summary>
+            
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="T:JobService_Test.NullLogger">
             <summary>
             
             </summary>
         </member>
-        <member name="M:JobService_Test.Job.TestJob.#ctor">
+        <member name="M:JobService_Test.NullLogger.Log(Hangfire.Logging.LogLevel,System.Func{System.String},System.Exception)">
             <summary>
             
             </summary>
+            <param name="logLevel"></param>
+            <param name="messageFunc"></param>
+            <param name="exception"></param>
+            <returns></returns>
         </member>
-        <member name="M:JobService_Test.Job.TestJob.Start">
+        <member name="M:JobService_Test.NullLogger.Log(Hangfire.Logging.LogLevel,System.Func{System.String},System.Exception,System.Object[])">
             <summary>
             
             </summary>
-        </member>
-        <member name="M:JobService_Test.Job.TestJob.Stop">
-            <summary>
-            
-            </summary>
+            <param name="logLevel"></param>
+            <param name="messageFunc"></param>
+            <param name="exception"></param>
+            <param name="formatParameters"></param>
+            <returns></returns>
         </member>
         <member name="T:JobService_Test.Startup">
             <summary>

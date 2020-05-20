@@ -9,13 +9,6 @@ namespace JobService_Test
         {
             TopshelfExitCode rc = HostFactory.Run(X =>
             {
-                X.Service<Job.TestJob>(Y =>
-                {
-                    Y.ConstructUsing(name => new Job.TestJob());
-                    Y.WhenStarted(T => T.Start());
-                    Y.WhenStopped(T => T.Stop());
-                });
-
                 X.RunAsLocalSystem();//服务使用NETWORK_SERVICE内置帐户运行。
                 //身份标识，有好几种方式，如：X.RunAs("username", "password"); X.RunAsPrompt(); X.RunAsNetworkService(); 等
 
@@ -35,7 +28,6 @@ namespace JobService_Test
                 });
             });
             Environment.ExitCode = (int)Convert.ChangeType(rc, rc.GetTypeCode());
-            Console.ReadLine();
         }
     }
 }
