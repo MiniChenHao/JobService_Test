@@ -1,18 +1,26 @@
 ﻿using Hangfire.Console;
 using Hangfire.Server;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace JobService_Test.AppService
+namespace JobService_Test
 {
     /// <summary>
     /// 
     /// </summary>
     public class SampleService : BaseAppService, ISampleService
     {
+        private ISampleService _sampleService;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sampleService"></param>
+        public SampleService(ISampleService sampleService)
+        {
+            _sampleService = sampleService;
+        }
+
         /// <summary>
         /// 
         /// </summary>

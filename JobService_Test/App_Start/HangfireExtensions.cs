@@ -3,12 +3,12 @@ using Autofac.Core;
 using Autofac.Core.Activators.Reflection;
 using Autofac.Integration.WebApi;
 using Hangfire;
+using Hangfire.Common;
 using Hangfire.Dashboard;
 using Hangfire.RecurringJobExtensions;
 using Hangfire.SqlServer;
 using Owin;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using Topshelf;
 using Topshelf.HostConfigurators;
@@ -77,6 +77,7 @@ namespace JobService_Test
         public static IContainer UseAutofac(this IAppBuilder app, System.Web.Http.HttpConfiguration config)
         {
             if (config == null) throw new ArgumentNullException(nameof(config));
+
             var builder = new ContainerBuilder();
             var assembly = typeof(Startup).Assembly;
             builder.RegisterAssemblyModules(assembly);
@@ -85,6 +86,19 @@ namespace JobService_Test
             config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
             GlobalConfiguration.Configuration.UseAutofacActivator(container);
             return container;
+        }
+
+        /// <summary>
+        /// 使用过滤器
+        /// </summary>
+        /// <param name="app"></param>
+        /// <param name="filters"></param>
+        /// <returns></returns>
+        public static IAppBuilder UseHangfireFilters(this IAppBuilder app, params JobFilterAttribute[] filters)
+        {
+            if (filters == null) throw new ArgumentNullException(nameof(filters));
+            foreach (var filter in filters) { GlobalConfiguration.Configuration.UseFilter(filter); }
+            return app;
         }
 
         /// <summary>

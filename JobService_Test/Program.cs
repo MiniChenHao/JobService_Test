@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hangfire;
+using System;
 using Topshelf;
 
 namespace JobService_Test
@@ -28,6 +29,13 @@ namespace JobService_Test
                 });
             });
             Environment.ExitCode = (int)Convert.ChangeType(rc, rc.GetTypeCode());
+
+            RecurringJob.AddOrUpdate<SampleService>("TestSimpleJob", X => X.SimpleJob(null), Cron.Minutely(), TimeZoneInfo.Local);
+
+            using (var server = new BackgroundJobServer())
+            {
+                Console.ReadLine();
+            }
         }
     }
 }

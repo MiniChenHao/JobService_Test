@@ -48,18 +48,14 @@ namespace JobService_Test
 
             app.UseWebApi(config);
 
-            //app.UseHangfireServer(additionalProcesses: new[] { new ProcessMonitor(checkInterval: TimeSpan.FromSeconds(1)) });
-
-            IContainer container = app.UseAutofac(config);
-            var queues = new[] { "default", "apis", "jobs" };
             app.UseStorage(new SqlServerStorage("Data Source=localhost;Initial Catalog=ShenOnlineJob;Persist Security Info=True;User ID=sa;Password=123")).UseConsole();
-            app.UseHangfireServer(new BackgroundJobServerOptions { ShutdownTimeout = TimeSpan.FromMinutes(30), Queues = queues, WorkerCount = Math.Max(Environment.ProcessorCount, 20) });
             app.UseHangfireDashboard();
             app.UseDashboardMetric();
-            app.UseHangfireServer();
 
-            //app.UseRecurringJob(typeof(Jobs.RecurringJobService));
-            app.UseRecurringJob(container);
+            //app.UseAutofac(config);
+            //app.UseHangfireServer();
+            //string[] queues = new string[] { "default", "apis", "jobs" };
+            //app.UseHangfireServer(new BackgroundJobServerOptions { ShutdownTimeout = TimeSpan.FromMinutes(30), Queues = queues, WorkerCount = Math.Max(Environment.ProcessorCount, 20) });
         }
     }
 }

@@ -136,12 +136,16 @@
     <Compile Include="AppService\IAppService.cs" />
     <Compile Include="AppService\ISampleService.cs" />
     <Compile Include="AppService\SampleService.cs" />
+    <Compile Include="App_Start\DelegateModule.cs" />
     <Compile Include="App_Start\HangfireExtensions.cs" />
     <Compile Include="App_Start\Bootstrap.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
+    <Compile Include="AutofacJobActivator.cs" />
+    <Compile Include="ContainerJobActivator.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="HangfireModule.cs" />
     <Compile Include="Jobs\IDependency.cs" />
     <Compile Include="Jobs\RecurringJobService.cs" />
     <Compile Include="NullLogger.cs" />

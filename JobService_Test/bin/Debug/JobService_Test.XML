@@ -4,47 +4,64 @@
         <name>JobService_Test</name>
     </assembly>
     <members>
-        <member name="T:JobService_Test.AppService.BaseAppService">
+        <member name="T:JobService_Test.BaseAppService">
             <summary>
             
             </summary>
         </member>
-        <member name="P:JobService_Test.AppService.BaseAppService.Logger">
+        <member name="P:JobService_Test.BaseAppService.Logger">
             <summary>
             
             </summary>
         </member>
-        <member name="T:JobService_Test.AppService.IAppService">
+        <member name="T:JobService_Test.IAppService">
             <summary>
             
             </summary>
         </member>
-        <member name="P:JobService_Test.AppService.IAppService.Logger">
+        <member name="P:JobService_Test.IAppService.Logger">
             <summary>
             
             </summary>
         </member>
-        <member name="T:JobService_Test.AppService.ISampleService">
+        <member name="T:JobService_Test.ISampleService">
             <summary>
             
             </summary>
         </member>
-        <member name="M:JobService_Test.AppService.ISampleService.SimpleJob(Hangfire.Server.PerformContext)">
+        <member name="M:JobService_Test.ISampleService.SimpleJob(Hangfire.Server.PerformContext)">
             <summary>
             simple job test
             </summary>
             <param name="context"></param>
         </member>
-        <member name="T:JobService_Test.AppService.SampleService">
+        <member name="T:JobService_Test.SampleService">
             <summary>
             
             </summary>
         </member>
-        <member name="M:JobService_Test.AppService.SampleService.SimpleJob(Hangfire.Server.PerformContext)">
+        <member name="M:JobService_Test.SampleService.#ctor(JobService_Test.ISampleService)">
+            <summary>
+            
+            </summary>
+            <param name="sampleService"></param>
+        </member>
+        <member name="M:JobService_Test.SampleService.SimpleJob(Hangfire.Server.PerformContext)">
             <summary>
             
             </summary>
             <param name="context"></param>
+        </member>
+        <member name="T:JobService_Test.DelegateModule">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:JobService_Test.DelegateModule.#ctor(System.Func{System.Collections.Generic.IEnumerable{System.Reflection.Assembly}})">
+            <summary>
+            
+            </summary>
+            <param name="assemblyProvider"></param>
         </member>
         <member name="T:JobService_Test.HangfireExtensions">
             <summary>
@@ -81,6 +98,14 @@
             </summary>
             <param name="app"></param>
             <param name="config"></param>
+            <returns></returns>
+        </member>
+        <member name="M:JobService_Test.HangfireExtensions.UseHangfireFilters(Owin.IAppBuilder,Hangfire.Common.JobFilterAttribute[])">
+            <summary>
+            使用过滤器
+            </summary>
+            <param name="app"></param>
+            <param name="filters"></param>
             <returns></returns>
         </member>
         <member name="M:JobService_Test.HangfireExtensions.UseRecurringJob(Owin.IAppBuilder,System.Type[])">
@@ -131,6 +156,51 @@
             <param name="hostControl"></param>
             <returns></returns>
         </member>
+        <member name="T:JobService_Test.AutofacJobActivator">
+            <summary>
+            Hangfire Job Activator based on Autofac IoC Container.
+            </summary>
+        </member>
+        <member name="F:JobService_Test.AutofacJobActivator.LifetimeScopeTag">
+            <summary>
+            Tag used in setting up per-job lifetime scope registrations.
+            </summary>
+        </member>
+        <member name="M:JobService_Test.AutofacJobActivator.#ctor(Autofac.ILifetimeScope,System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="lifetimeScope"></param>
+            <param name="useTaggedLifetimeScope"></param>
+        </member>
+        <member name="M:JobService_Test.AutofacJobActivator.ActivateJob(System.Type)">
+            <inheritdoc />
+        </member>
+        <member name="M:JobService_Test.AutofacJobActivator.BeginScope(Hangfire.JobActivatorContext)">
+            <summary>
+            开始范围
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="T:JobService_Test.ContainerJobActivator">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:JobService_Test.ContainerJobActivator.#ctor(Autofac.IContainer)">
+            <summary>
+            
+            </summary>
+            <param name="container"></param>
+        </member>
+        <member name="M:JobService_Test.ContainerJobActivator.ActivateJob(System.Type)">
+            <summary>
+            
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
         <member name="T:JobService_Test.Controllers.HomeController">
             <summary>
             Home 控制器
@@ -146,6 +216,12 @@
             <summary>
             测试 控制器
             </summary>
+        </member>
+        <member name="M:JobService_Test.Controllers.TestController.SimpleJob">
+            <summary>
+            每分钟执行控制台作业
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:JobService_Test.Controllers.ValuesController">
             <summary>
@@ -183,6 +259,37 @@
             DELETE
             </summary>
             <param name="id">ID</param>
+        </member>
+        <member name="T:JobService_Test.HangfireModule">
+            <summary>
+            Hangfire Module
+            </summary>
+        </member>
+        <member name="M:JobService_Test.HangfireModule.AttachToComponentRegistration(Autofac.Core.IComponentRegistry,Autofac.Core.IComponentRegistration)">
+            <summary>
+            附加到组件注册
+            </summary>
+            <param name="componentRegistry"></param>
+            <param name="registration"></param>
+        </member>
+        <member name="M:JobService_Test.HangfireModule.InjectLoggerProperties(System.Object)">
+            <summary>
+            注入记录器属性
+            </summary>
+            <param name="instance"></param>
+        </member>
+        <member name="M:JobService_Test.HangfireModule.OnComponentPreparing(System.Object,Autofac.Core.PreparingEventArgs)">
+            <summary>
+            关于组件准备
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:JobService_Test.HangfireModule.Load(Autofac.ContainerBuilder)">
+            <summary>
+            Auto register
+            </summary>
+            <param name="builder"></param>
         </member>
         <member name="T:JobService_Test.Jobs.IDependency">
             <summary>

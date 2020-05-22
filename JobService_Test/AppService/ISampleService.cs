@@ -1,14 +1,9 @@
 ﻿using Hangfire;
 using Hangfire.RecurringJobExtensions;
 using Hangfire.Server;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace JobService_Test.AppService
+namespace JobService_Test
 {
     /// <summary>
     /// 
@@ -19,9 +14,7 @@ namespace JobService_Test.AppService
         /// simple job test
         /// </summary>
         /// <param name="context"></param>
-        [RecurringJob("* * * * *")]
-        [AutomaticRetry(Attempts = 3)]
-        [DisplayName("SimpleJobTest")]
+        [DisplayName("Creating order from product, productId:{0}")]
         [Queue("jobs")]
         void SimpleJob(PerformContext context);
     }
